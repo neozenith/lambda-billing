@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/neozenith/lambda-billing.git"
+  },
   "keywords": [
     "lambda",
     "aws",
@@ -13,5 +17,8 @@
     "pdf"
   ],
   "author": "Josh Wilson",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pdfkit": "^0.8.0"
+  }
 }
