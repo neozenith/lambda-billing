@@ -7,3 +7,22 @@ This project is a NodeJS Lambda function that:
 - separate out all costs by tags `billing:name`, `billing:email`, `billing:project`
 - generate PDF Invoice
 - email Invoice to `billing:email`
+
+## Getting Started
+
+`npm install`
+
+`npm test`
+
+## Local Development
+
+Test fixtures are located in the `fixtures/` directory. This contains `event.json`
+and `context.json`. This should represent the data you are trying to mock.
+
+Run the following to test your even handler
+
+`npm test`
+
+## Deployment
+
+`npm run deploy`
