@@ -33,7 +33,5 @@
   ],
   "author": "Josh Wilson",
   "license": "MIT",
-  "dependencies": {
-    "pdfkit": "^0.8.0"
-  }
+  "dependencies": {}
 }

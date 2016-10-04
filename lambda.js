@@ -1,3 +1,5 @@
 'use strict';
-var pdfkit = require('pdfkit');
 
+exports.event_handler = function (event, context, callback) {
+  console.log('event: ' + event);
+};
