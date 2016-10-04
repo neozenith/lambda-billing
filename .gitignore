@@ -2,8 +2,7 @@
 node_modules/
 
 # Sensitive Files
-.env
-deploy.env
+*.env
 
 # Log files
 npm-debug.log
