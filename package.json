@@ -5,7 +5,6 @@
   "main": "lambda.js",
   "scripts": {
     "test": "node-lambda run -H lambda.event_handler -j fixtures/event.json -x fixtures/context.json",
-    "deploy":"echo NotImplemented"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
