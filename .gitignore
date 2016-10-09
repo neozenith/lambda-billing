@@ -1,8 +1,10 @@
 #NodeJS 
 node_modules/
+packages/
 
 # Sensitive Files
 *.env
+!sample.env
 
 # Log files
 npm-debug.log
