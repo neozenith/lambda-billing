@@ -1,6 +1,6 @@
 #NodeJS 
 node_modules/
-packages/
+output/
 
 # Sensitive Files
 *.env
