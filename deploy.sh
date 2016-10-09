@@ -34,14 +34,14 @@ function create_lambda_function(){
   fi
 
   echo $AWS_ACCOUNT_ID
-  AWS_ROLE="arn:aws:iam:$AWS_ACCOUNT_ID:role/service_role/lambda_s3_readonly" 
+  AWS_ROLE="arn:aws:iam::$AWS_ACCOUNT_ID:role/service-role/lambda_s3_readonly" 
+  echo $AWS_ROLE
 
 aws lambda create-function --function-name $FUNCTION_NAME \
   --runtime $LAMBDA_RUNTIME \
   --handler "lambda.event_handler" \
   --zip-file "$ZIP_BUILD_PATH" \
-  --role $AWS_ROLE \
-  --publish
+  --role $AWS_ROLE 
 }
 
 function update_lambda_function(){
