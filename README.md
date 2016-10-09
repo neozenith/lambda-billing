@@ -25,4 +25,6 @@ Run the following to test your even handler
 
 ## Deployment
 
-`npm run deploy`
+`. deploy.sh`
+
+At this stage there is only a bash script which runs the AWS CLI
