@@ -1,8 +1,5 @@
 #! /bin/bash
 
-# Assumes ~/.aws/credentials is configured.
-# http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files
-
 # Lambda
 FUNCTION_NAME="automated_billing"
 FUNCTION_DESC="Automated_BillingOf_AWS_Resources_by_tags"
@@ -14,8 +11,8 @@ echo $AWS_ACCOUNT_ID
 AWS_REGION="us-west-2"
 
 # CloudWatch Events
-RULE_NAME="FourthDayOfMonth"
 # http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
+RULE_NAME="FourthDayOfMonth"
 RULE_EXP="cron(* * 4 * ? *)"
 
 # Archive Code
@@ -23,9 +20,38 @@ BUILD_DIR="output/"
 OUTFILE="build-$(date +"%Y%m%d%H%M").zip"
 FULL_OUTPATH=$BUILD_DIR$OUTFILE
 
+function check_install_aws_cli () {
+  echo "Checking for AWS CLI tool"
+  if [ -z "$(which aws)" ]; then
+    echo "Installing AWS CLI tool"
+    check_install_pip
+    sudo pip install --upgrade awscli
+  fi
+
+  # Assumes ~/.aws/credentials is configured.
+  AWS_CREDENTIALS_HELP_URL="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files"
+  echo "Checking credentials are installed"
+  if [ -f "~/.aws/credentials" ]; then
+    echo "AWS Credentials not found!!"
+    echo "Openning web page in 5 sec: $AWS_CREDENTIALS_HELP_URL"
+    sleep 5
+    open "$AWS_CREDENTIALS_HELP_URL"
+    kill -INT $$
+  fi
+}
+
+function check_install_pip () {
+  echo "Checking for Pip..."
+  if [ -z "$(which pip)" ]; then
+    echo "Installing Pip"
+    curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py -o "get-pip.py"
+    sudo python get-pip.py
+  fi
+}
+
 function build_package () {
   OPTIONS="-r"
-  FILELIST="lambda.js package.json node_modules/"
+  FILELIST="lambda.js package.json"
   zip $OPTIONS $FULL_OUTPATH $FILELIST
 }
 
@@ -103,6 +129,7 @@ function  cleanup_build() {
 }
 
 function build(){
+  check_install_aws_cli
   build_package
   create_update_lambda
   create_update_event_trigger
