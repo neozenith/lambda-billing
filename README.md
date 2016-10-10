@@ -1,4 +1,5 @@
 # AWS Lambda Automated Billing
+[![Build Status](https://travis-ci.org/neozenith/lambda-billing.svg?branch=master)](https://travis-ci.org/neozenith/lambda-billing)
 
 ## Acceptance Criteria
 This project is a NodeJS Lambda function that:
