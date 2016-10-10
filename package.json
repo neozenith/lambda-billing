@@ -4,7 +4,7 @@
   "description": "NodeJS Lambda Automated Billing to AWS tagged projects",
   "main": "lambda.js",
   "scripts": {
-    "test": "node-lambda run -H lambda.event_handler -j fixtures/event.json -x fixtures/context.json",
+    "test": "node-lambda run -H lambda.event_handler -j fixtures/event.json -x fixtures/context.json"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
